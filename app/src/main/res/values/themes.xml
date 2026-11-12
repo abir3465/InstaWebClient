@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.InstaWebClient" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#E1306C</item>
+        <item name="colorPrimaryVariant">#C13584</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="android:statusBarColor">#000000</item>
+        <item name="android:navigationBarColor">#000000</item>
+        <item name="android:windowBackground">#000000</item>
+    </style>
+</resources>
