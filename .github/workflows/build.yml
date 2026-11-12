@@ -21,17 +21,18 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
 
       - name: Grant execute permission for gradlew
         run: |
           if [ -f "./gradlew" ]; then
             chmod +x ./gradlew
-          else
-            echo "No gradlew found – will generate later"
           fi
 
       - name: Build Debug APK
         run: |
+          # Generate Gradle wrapper if missing
           if [ ! -f "./gradlew" ]; then
             gradle wrapper --gradle-version 8.9
             chmod +x ./gradlew
