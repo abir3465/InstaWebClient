@@ -10,8 +10,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.view.ContextMenu
-import android.view.View
 import android.webkit.*
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -104,7 +102,6 @@ class MainActivity : AppCompatActivity() {
 
         webView.webChromeClient = WebChromeClient()
 
-        registerForContextMenu(webView)
         webView.setOnLongClickListener {
             val result = webView.hitTestResult
             when (result.type) {
@@ -148,23 +145,3 @@ class MainActivity : AppCompatActivity() {
         """.trimIndent()
         binding.webView.evaluateJavascript(js, null)
     }
-
-    private fun setupFabs() {
-        binding.fabDownload.setOnClickListener {
-            tryDownloadCurrentMedia()
-        }
-
-        binding.fabMenu.setOnClickListener {
-            showMenu()
-        }
-    }
-
-    private fun showMenu() {
-        val options = arrayOf("Home", "Refresh", "Settings", "Clear Cache", "Toggle Desktop Mode")
-        AlertDialog.Builder(this)
-            .setTitle("Menu")
-            .setItems(options) { _, which ->
-                when (which) {
-                    0 -> binding.webView.loadUrl("https://www.instagram.com/")
-                    1 -> binding.webView.reload()
-                    2
